@@ -1,0 +1,3 @@
+Recarga la página varias veces. ¿La hora cambia sola mientras miras la página, o solo al recargar? ¿Por qué crees que ocurre esto? Con lo que sabes hasta ahora basta una hipótesis; lo veremos en la siguiente unidad.
+
+La hora no cambia sola mientras estoy mirando la página, sino que cambia al recargarla. Creo que puede ser porque el navegador mantiene la información que se muestra en pantalla y no vuelve a comprobar la hora continuamente. Quizá haga falta algún mecanismo para indicarle que tiene que actualizar el componente cada cierto tiempo

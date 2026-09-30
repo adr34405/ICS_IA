@@ -1,0 +1,32 @@
+1. ¿En qué archivo está el punto de entrada de la aplicación? ¿Qué hace la función `createRoot`?
+
+El punto de entrada de la aplicación está en src/main.jsx
+
+La función createRoot crea la raíz de React en el elemento HTML que tiene el ID root. Después, mediante .render(), se encarga de renderizar el componente App dentro de ese elemento.
+
+2. ¿Cuál es el ID del elemento HTML donde se monta la aplicación? ¿En qué archivo está definido?
+
+El ID es root y está definido en el archivo index.html, mediante el elemento:
+
+<div id="root"></div>
+
+3. Dibuja el árbol de componentes que se renderiza al arrancar el proyecto recién creado.
+StrictMode
+└── App
+
+4. ¿Qué ocurre en la página si eliminas `<StrictMode>` de `main.jsx`? ¿Y en la consola en modo desarrollo?
+
+Al eliminar <StrictMode> de main.jsx, la página sigue funcionando y se muestra igual. En la consola en modo desarrollo dejan de producirse las ejecuciones adicionales que provoca StrictMode, por lo que los mensajes de console.log() y algunos efectos que podían aparecer o ejecutarse dos veces pasan a hacerlo una sola vez
+
+5. Abre `App.jsx` y localiza tres fragmentos de código JavaScript escritos entre llaves `{ }` dentro del JSX. Explica qué hace cada uno.
+
+{heroImg} (en <img src={heroImg} ... />): Asigna dinámicamente la ruta de la imagen importada al atributo src del elemento HTML. 
+
+{() => setCount((count) => count + 1)} (en onClick={...}): Pasa una función al evento del botón que incrementa en 1 la variable de estado count al hacer clic.
+
+{count} (en Count is {count}): Interpola y muestra en la interfaz el valor actual de la variable de estado count.
+
+6. ¿Qué es el elemento `<>` que envuelve el JSX devuelto por `App`? ¿Genera algún elemento en el DOM? Compruébalo con las herramientas de desarrollo del navegador (pestaña *Elementos*).
+Es un React Fragment. Sirve para agrupar múltiples elementos devueltos por un componente sin necesidad de añadir un nodo HTML contenedor adicional.
+
+No genera ningún elemento en el DOM. Al inspeccionar la página en la pestaña Elementos del navegador, verás que sus nodos hijos (como <section id="center"> o <div className="ticks">) se renderizan directamente dentro del contenedor del componente, sin ninguna etiqueta intermedia que los envuelva en la estructura HTML final.

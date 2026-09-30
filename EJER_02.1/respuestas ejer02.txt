@@ -1,0 +1,120 @@
+## Ejercicio 2 · Localización de errores
+
+Cada fragmento contiene **un error**. Indica cuál es, qué síntoma produce y escribe la versión corregida.
+
+**2.1**
+
+```jsx
+export function saludo() {
+  return<p>¡Hola, clase!</p>;
+}
+```
+El error está en que el nombre de la función empieza por minúscula. En React, los componentes deben empezar por mayúscula para que React los reconozca como componentes.
+
+Corregido:
+
+export function Saludo() {
+  return <p>¡Hola, clase!</p>;
+}
+
+Síntoma: si se utiliza <saludo />, React lo interpreta como una etiqueta HTML en lugar de como un componente.
+
+**2.2**
+
+```jsx
+export function Tarjeta() {
+  return (
+    <h2>Desarrollo Web en Entorno Cliente</h2>
+    <p>Segundo curso de DAW</p>
+  );
+}
+```
+El error es que el return devuelve dos elementos (h2 y p) sin un elemento que los englobe.
+
+Corregido:
+
+export function Tarjeta() {
+  return (
+    <>
+      <h2>Desarrollo Web en Entorno Cliente</h2>
+      <p>Segundo curso de DAW</p>
+    </>
+  );
+}
+
+Síntoma: aparece un error de compilación porque un componente debe devolver un único elemento raíz.
+
+**2.3**
+
+```jsx
+// Archivo: src/Pie.jsx
+function Pie() {
+  return<footer>© Departamento de Informática</footer>;
+}
+
+// Archivo: src/App.jsx
+import { Pie } from './Pie';
+```
+
+El error está en que la función Pie no está exportada, pero después se intenta importar desde App.jsx.
+
+Corregido:
+
+export function Pie() {
+  return <footer>© Departamento de Informática</footer>;
+}
+
+Y se mantiene:
+
+import { Pie } from './Pie';
+
+Síntoma: aparece un error porque Pie no está disponible para ser importado.
+
+**2.4**
+
+```jsx
+// Archivo: src/Cabecera.jsx
+export function Cabecera() {
+  return<header>Mi aplicación</header>;
+}
+
+// Archivo: src/App.jsx
+import Cabecera from './Cabecera';
+```
+El error está en la forma de importar Cabecera. La función se ha exportado con nombre:
+
+export function Cabecera()
+
+Por lo tanto, hay que utilizar llaves al importarla.
+
+Corregido:
+
+import { Cabecera } from './Cabecera';
+
+Síntoma: aparece un error porque se intenta importar como una exportación por defecto cuando realmente es una exportación con nombre.
+
+**2.5**
+
+```jsx
+export function Fecha() {
+  const anioActual = new Date().getFullYear();
+  return<p>Estamos en el año anioActual</p>;
+}
+```
+El error está en que anioActual se ha escrito como texto. Para utilizar una variable JavaScript dentro de JSX hay que ponerla entre llaves.
+
+Corregido:
+
+export function Fecha() {
+  const anioActual = new Date().getFullYear();
+
+  return <p>Estamos en el año {anioActual}</p>;
+}
+
+Síntoma: sin las llaves, la página mostraría literalmente:
+
+Estamos en el año anioActual
+
+Con {anioActual} muestra el año actual.
+
+
